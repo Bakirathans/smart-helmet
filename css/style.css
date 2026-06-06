@@ -486,6 +486,9 @@ a{text-decoration:none}
   .compliance-card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .safety-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
