@@ -131,6 +131,7 @@ onValue(ref(db, '/'), snap => {
   addLogRow(ts, temp, hum, gas);
 
   document.getElementById('lastTimestamp').textContent = ts;
+  saveSessionState();
 
 }, err => {
   console.error(err);
