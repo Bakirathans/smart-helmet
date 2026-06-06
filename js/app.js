@@ -18,9 +18,9 @@ let THRESH = loadSettings();
 
 function defaultSettings() {
   return {
-    temp: { warn: 35, danger: 45, max: 100 },
+    temp: { warn: 34, danger: 40, max: 100 },
     hum: { warn: 80, danger: 85, max: 100 },
-    gas: { warn: 700, danger: 800, max: 1000 },
+    gas: { warn: 680, danger: 750, max: 1000 },
     notif: { browser: false, sound: false, strip: true }
   };
 }
