@@ -884,3 +884,81 @@ a{text-decoration:none}
   gap: 8px;
 }
 
+/* ── MOBILE BOTTOM NAVIGATION ── */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    z-index: 200;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.06);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: var(--slate-light);
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-decoration: none;
+    flex: 1;
+    height: 100%;
+    transition: all 0.15s ease;
+  }
+  
+  .bottom-nav-item svg {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  
+  .bottom-nav-item:active svg {
+    transform: scale(0.9);
+  }
+  
+  .bottom-nav-item.active {
+    color: var(--navy);
+    font-weight: 700;
+  }
+  
+  .bottom-nav-item.active svg {
+    opacity: 1;
+    stroke-width: 2.2px;
+  }
+  
+  /* Hide the hamburger menu toggle button in the header */
+  .menu-toggle {
+    display: none !important;
+  }
+  
+  /* Adjust the main layout wrapper to prevent bottom navigation overlaps */
+  .layout {
+    padding-bottom: 74px !important;
+  }
+  
+  /* Hide the desktop/drawer sidebar completely on mobile since we now use the bottom bar */
+  .sidebar {
+    display: none !important;
+  }
+  .sidebar-backdrop {
+    display: none !important;
+  }
+}
+
+
