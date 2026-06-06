@@ -553,6 +553,9 @@ a{text-decoration:none}
   .slider {
     flex: 1;
   }
+  .safety-layout {
+    grid-template-columns: 1fr;
+  }
   .subpage-header {
     padding: 14px 16px !important;
     gap: 0 !important;
