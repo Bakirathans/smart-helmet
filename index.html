@@ -15,6 +15,31 @@
 
 <body>
 
+  <!-- ── SPLASH SCREEN ── -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-content">
+      <svg class="splash-logo" viewBox="0 0 36 36" fill="none">
+        <path d="M6 24C6 14.5 11 6 18 6C25 6 30 14.5 30 24" stroke="#ffffff" stroke-width="2.5" fill="none"
+          stroke-linecap="round" />
+        <path d="M4 24H32C32 27.3 28.4 30 18 30C7.6 30 4 27.3 4 24Z" fill="#ffffff" />
+        <rect x="13" y="28.5" width="10" height="2.5" rx="1.25" fill="#ffffff" />
+        <circle cx="18" cy="17" r="3.5" fill="#E8730A" />
+      </svg>
+      <h1 class="splash-title">Mineshelm</h1>
+      <p class="splash-subtitle">Safety & Compliance Monitor</p>
+    </div>
+  </div>
+  <script>
+    setTimeout(() => {
+      const splash = document.getElementById('splash-screen');
+      if (splash) {
+        splash.style.opacity = '0';
+        splash.style.visibility = 'hidden';
+        setTimeout(() => splash.remove(), 500);
+      }
+    }, 2000);
+  </script>
+
   <!-- MOBILE HEADER -->
   <div class="mobile-header">
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
