@@ -489,22 +489,23 @@ a{text-decoration:none}
 }
 
 @media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    min-height: 100vh;
+  }
   .mobile-header {
     display: flex;
+    width: 100%;
   }
   .sidebar-backdrop {
-    display: block;
+    display: none !important;
   }
   .sidebar {
-    transform: translateX(-100%);
-    box-shadow: var(--sh-md);
-    z-index: 110;
-  }
-  .sidebar.open {
-    transform: translateX(0);
+    display: none !important;
   }
   .layout {
-    margin-left: 0;
+    margin-left: 0 !important;
+    width: 100%;
   }
   .topbar {
     display: none;
@@ -551,6 +552,12 @@ a{text-decoration:none}
   }
   .slider {
     flex: 1;
+  }
+  .subpage-header {
+    padding: 14px 16px !important;
+    gap: 0 !important;
+    border-radius: 0 !important;
+    margin-bottom: 4px !important;
   }
 }
 
