@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings — SmartHelmet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body class="subpage-body">
+
+<div class="layout">
+  <!-- SUBPAGE HEADER -->
+  <header class="subpage-header">
+    <a href="index.html" class="btn-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Dashboard
+    </a>
+    <div>
+      <h1 class="page-title">Settings</h1>
+      <div class="breadcrumb">Thresholds · Notifications · Device</div>
+    </div>
+  </header>
+
+  <!-- ════════════════ PAGE: SETTINGS ════════════════ -->
+  <main class="content page-view active" id="page-settings">
+    <div class="settings-layout">
+
+      <!-- Thresholds -->
+      <div class="panel settings-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">Alert Thresholds</div>
+            <div class="panel-sub">Configure warning and danger levels per sensor</div>
+          </div>
+        </div>
+        <div class="settings-body">
+
+          <div class="settings-group">
+            <div class="settings-group-title">
+              <span class="sensor-dot temp-dot-sm"></span> Temperature (°C)
+            </div>
+            <div class="settings-row">
+              <label class="settings-label">Warning Level</label>
+              <div class="input-row">
+                <input type="range" id="slTempWarn" min="20" max="60" value="35" class="slider temp-slider"
+                  oninput="syncSlider('TempWarn',this.value)" />
+                <input type="number" id="inTempWarn" class="num-input" value="35" min="20" max="60"
+                  oninput="syncInput('TempWarn',this.value)" />
+                <span class="input-unit">°C</span>
+              </div>
+            </div>
+            <div class="settings-row">
+              <label class="settings-label">Danger Level</label>
+              <div class="input-row">
+                <input type="range" id="slTempDanger" min="25" max="80" value="45" class="slider temp-slider"
+                  oninput="syncSlider('TempDanger',this.value)" />
+                <input type="number" id="inTempDanger" class="num-input" value="45" min="25" max="80"
+                  oninput="syncInput('TempDanger',this.value)" />
+                <span class="input-unit">°C</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <div class="settings-group-title">
+              <span class="sensor-dot hum-dot-sm"></span> Humidity (% RH)
+            </div>
+            <div class="settings-row">
+              <label class="settings-label">Warning Level</label>
+              <div class="input-row">
+                <input type="range" id="slHumWarn" min="30" max="90" value="60" class="slider hum-slider"
+                  oninput="syncSlider('HumWarn',this.value)" />
+                <input type="number" id="inHumWarn" class="num-input" value="60" min="30" max="90"
+                  oninput="syncInput('HumWarn',this.value)" />
+                <span class="input-unit">%</span>
+              </div>
+            </div>
+            <div class="settings-row">
+              <label class="settings-label">Danger Level</label>
+              <div class="input-row">
+                <input type="range" id="slHumDanger" min="40" max="100" value="80" class="slider hum-slider"
+                  oninput="syncSlider('HumDanger',this.value)" />
+                <input type="number" id="inHumDanger" class="num-input" value="80" min="40" max="100"
+                  oninput="syncInput('HumDanger',this.value)" />
+                <span class="input-unit">%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <div class="settings-group-title">
+              <span class="sensor-dot gas-dot-sm"></span> Gas Level (PPM)
+            </div>
+            <div class="settings-row">
+              <label class="settings-label">Warning Level</label>
+              <div class="input-row">
+                <input type="range" id="slGasWarn" min="50" max="500" value="200" class="slider gas-slider"
+                  oninput="syncSlider('GasWarn',this.value)" />
+                <input type="number" id="inGasWarn" class="num-input" value="200" min="50" max="500"
+                  oninput="syncInput('GasWarn',this.value)" />
+                <span class="input-unit">ppm</span>
+              </div>
+            </div>
+            <div class="settings-row">
+              <label class="settings-label">Danger Level</label>
+              <div class="input-row">
+                <input type="range" id="slGasDanger" min="100" max="1000" value="400" class="slider gas-slider"
+                  oninput="syncSlider('GasDanger',this.value)" />
+                <input type="number" id="inGasDanger" class="num-input" value="400" min="100" max="1000"
+                  oninput="syncInput('GasDanger',this.value)" />
+                <span class="input-unit">ppm</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-actions">
+            <button class="btn-primary" onclick="saveSettings()">Save Thresholds</button>
+            <button class="btn-secondary" onclick="resetSettings()">Reset to Defaults</button>
+          </div>
+          <div class="settings-saved" id="settingsSaved" style="display:none">
+            ✓ Settings saved successfully.
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="panel settings-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">Notifications</div>
+            <div class="panel-sub">Control how alerts are delivered</div>
+          </div>
+        </div>
+        <div class="settings-body">
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-title">Browser Notifications</div>
+              <div class="toggle-sub">Send desktop alerts when thresholds are exceeded</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="togBrowserNotif" onchange="saveNotifSettings()" />
+              <span class="toggle-track"></span>
+            </label>
+          </div>
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-title">Sound Alerts</div>
+              <div class="toggle-sub">Play an audio beep on danger events</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="togSound" onchange="saveNotifSettings()" />
+              <span class="toggle-track"></span>
+            </label>
+          </div>
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-title">Show Warning Strip</div>
+              <div class="toggle-sub">Display the top alert banner for warnings and danger</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="togStrip" checked onchange="saveNotifSettings()" />
+              <span class="toggle-track"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Device Info -->
+      <div class="panel settings-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">Device & Connection</div>
+            <div class="panel-sub">Firebase and ESP32 configuration</div>
+          </div>
+        </div>
+        <div class="settings-body">
+          <div class="info-grid">
+            <div class="info-row"><span class="info-key">Firebase URL</span><span
+                class="info-val mono-val">mines-7b85e-default-rtdb.asia-southeast1</span></div>
+            <div class="info-row"><span class="info-key">Microcontroller</span><span class="info-val">ESP32
+                DevKit</span></div>
+            <div class="info-row"><span class="info-key">Temp Sensor</span><span class="info-val">DHT22 — GPIO
+                4</span></div>
+            <div class="info-row"><span class="info-key">Gas Sensor</span><span class="info-val">MQ-2 — GPIO
+                34 (ADC)</span></div>
+            <div class="info-row"><span class="info-key">Upload Interval</span><span class="info-val">3
+                seconds</span></div>
+            <div class="info-row"><span class="info-key">Connection</span><span class="info-val"
+                id="infoConn">Connecting…</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="js/app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(() => console.log('Service Worker Registered'));
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alerts — SmartHelmet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body class="subpage-body">
+
+<div class="layout">
+  <!-- SUBPAGE HEADER -->
+  <header class="subpage-header">
+    <a href="index.html" class="btn-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Dashboard
+    </a>
+    <div>
+      <h1 class="page-title">Alerts</h1>
+      <div class="breadcrumb">Threshold violations & event feed</div>
+    </div>
+  </header>
+
+  <!-- ════════════════ PAGE: ALERTS ════════════════ -->
+  <main class="content page-view active" id="page-alerts">
+    <div class="alerts-top-row">
+      <div class="alert-summary-card danger-card">
+        <div class="ascard-num" id="aDangerCount">0</div>
+        <div class="ascard-lbl">Danger Events</div>
+      </div>
+      <div class="alert-summary-card warn-card">
+        <div class="ascard-num" id="aWarnCount">0</div>
+        <div class="ascard-lbl">Warning Events</div>
+      </div>
+      <div class="alert-summary-card safe-card">
+        <div class="ascard-num" id="aSafeCount">0</div>
+        <div class="ascard-lbl">Safe Readings</div>
+      </div>
+      <div class="alert-summary-card info-card">
+        <div class="ascard-num" id="aUptime">—</div>
+        <div class="ascard-lbl">Session Uptime</div>
+      </div>
+    </div>
+
+    <div class="alerts-layout">
+      <div class="panel alerts-feed-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">Alert Feed</div>
+            <div class="panel-sub">All threshold violations, newest first</div>
+          </div>
+          <button class="btn-ghost" onclick="clearAlertFeed()">Clear Feed</button>
+        </div>
+        <div class="alerts-feed-scroll" id="alertFeed">
+          <div class="alert-feed-empty">No alerts triggered yet. All sensors within safe range.</div>
+        </div>
+      </div>
+
+      <div class="panel thresholds-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">Active Thresholds</div>
+            <div class="panel-sub">Current configuration</div>
+          </div>
+        </div>
+        <div class="thresh-list">
+          <div class="thresh-item">
+            <div class="thresh-sensor"><span class="sensor-dot temp-dot-sm"></span> Temperature</div>
+            <div class="thresh-vals">
+              <span class="thresh-badge warn-badge">Warn › <span id="dispTempWarn">35</span>°C</span>
+              <span class="thresh-badge danger-badge">Danger › <span id="dispTempDanger">45</span>°C</span>
+            </div>
+          </div>
+          <div class="thresh-item">
+            <div class="thresh-sensor"><span class="sensor-dot hum-dot-sm"></span> Humidity</div>
+            <div class="thresh-vals">
+              <span class="thresh-badge warn-badge">Warn › <span id="dispHumWarn">60</span>%</span>
+              <span class="thresh-badge danger-badge">Danger › <span id="dispHumDanger">80</span>%</span>
+            </div>
+          </div>
+          <div class="thresh-item">
+            <div class="thresh-sensor"><span class="sensor-dot gas-dot-sm"></span> Gas Level</div>
+            <div class="thresh-vals">
+              <span class="thresh-badge warn-badge">Warn › <span id="dispGasWarn">200</span> ppm</span>
+              <span class="thresh-badge danger-badge">Danger › <span id="dispGasDanger">400</span> ppm</span>
+            </div>
+          </div>
+        </div>
+        <div class="thresh-footer">Edit thresholds in <a href="settings.html" class="inline-link">Settings</a></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="js/app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(() => console.log('Service Worker Registered'));
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compliance Regulations — SmartHelmet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body class="subpage-body">
+
+<div class="layout">
+  <!-- SUBPAGE HEADER -->
+  <header class="subpage-header">
+    <a href="index.html" class="btn-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Dashboard
+    </a>
+    <div>
+      <h1 class="page-title">Compliance Regulations</h1>
+      <div class="breadcrumb">MSHA & OSHA underground safety standards</div>
+    </div>
+  </header>
+
+  <!-- ════════════════ PAGE: COMPLIANCE ════════════════ -->
+  <main class="content page-view active" id="page-compliance">
+    <div class="compliance-layout">
+      <!-- MSHA Rules Summary -->
+      <div class="panel compliance-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">Mines Safety Regulations (MSHA & OSHA)</div>
+            <div class="panel-sub">Regulatory thresholds and safety protocols for underground mining</div>
+          </div>
+        </div>
+        <div class="compliance-body">
+          <div class="compliance-card-grid">
+            <div class="comp-rule-card temp-rule">
+              <div class="rule-icon temp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+              </div>
+              <div class="rule-title">Thermal Stress (ACGIH/MSHA)</div>
+              <div class="rule-desc">
+                Underground heat hazards are regulated to prevent heat fatigue and stroke.
+                Dry-bulb limits specify active hydration breaks above <strong>35°C</strong>, and work stoppage above
+                <strong>40°C</strong> core-equivalent.
+              </div>
+              <div class="rule-badge status-active">CFR 30 § 57.5050</div>
+            </div>
+
+            <div class="comp-rule-card hum-rule">
+              <div class="rule-icon hum-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              </div>
+              <div class="rule-title">Humidity Index Limits</div>
+              <div class="rule-desc">
+                High relative humidity (&gt; 80%) prevents sweat evaporation, multiplying heat stress index.
+                Continuous exposure under high humidity requires active cooling zones and monitored work-rest cycles.
+              </div>
+              <div class="rule-badge status-active">MSHA Heat Safety Guide</div>
+            </div>
+
+            <div class="comp-rule-card gas-rule">
+              <div class="rule-icon gas-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                  <line x1="12" y1="9" x2="12" y2="13"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+              </div>
+              <div class="rule-title">Toxic & Explosive Gases</div>
+              <div class="rule-desc">
+                Combustible gases (Methane) and toxic gases (Carbon Monoxide, LPG) pose severe explosion and
+                asphyxiation risks.
+                MSHA CFR Part 75 mandates alert actions above <strong>200 ppm</strong> (combustibles) and instant
+                evacuation if methane exceeds <strong>1.5%</strong>.
+              </div>
+              <div class="rule-badge status-active">30 CFR Part 75</div>
+            </div>
+          </div>
+
+          <table class="compliance-table">
+            <thead>
+              <tr>
+                <th>Environmental Parameter</th>
+                <th>MSHA Standard Warning Threshold</th>
+                <th>MSHA Standard Danger Threshold</th>
+                <th>Required Operator Protocol</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Ambient Temperature</strong></td>
+                <td>&ge; 35°C (ACGIH Level 1)</td>
+                <td>&ge; 45°C (Evacuate Zone)</td>
+                <td>Warning: Mandatory hydration every 15m. Danger: Shut down station, evacuate to cooling bay.</td>
+              </tr>
+              <tr>
+                <td><strong>Relative Humidity</strong></td>
+                <td>&ge; 60% (Heat Index Warn)</td>
+                <td>&ge; 80% (Extreme Heat Load)</td>
+                <td>Warning: Monitor worker skin temp. Danger: Implement 1:1 work-to-rest ratio in cooling rooms.</td>
+              </tr>
+              <tr>
+                <td><strong>Methane/Combustibles</strong></td>
+                <td>&ge; 200 ppm (Action level)</td>
+                <td>&ge; 400 ppm (Explosive Limit Risk)</td>
+                <td>Warning: Increase ventilation flow. Danger: De-energize all electric devices, immediate evacuation.</td>
+              </tr>
+              <tr>
+                <td><strong>Carbon Monoxide (CO)</strong></td>
+                <td>&ge; 35 ppm (8-hour PEL)</td>
+                <td>&ge; 100 ppm (Immediately Dangerous)</td>
+                <td>Warning: Self-contained self-rescuer (SCSR) prep. Danger: Put on SCSR, evacuate upwind.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="js/app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(() => console.log('Service Worker Registered'));
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics — SmartHelmet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body class="subpage-body">
+
+<div class="layout">
+  <!-- SUBPAGE HEADER -->
+  <header class="subpage-header">
+    <a href="index.html" class="btn-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Dashboard
+    </a>
+    <div>
+      <h1 class="page-title">Analytics</h1>
+      <div class="breadcrumb">Session sensor history & statistics</div>
+    </div>
+  </header>
+
+  <!-- ════════════════ PAGE: ANALYTICS ════════════════ -->
+  <main class="content page-view active" id="page-analytics">
+    <div class="analytics-stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Avg Temperature</div>
+        <div class="stat-value temp-color" id="aAvgTemp">—</div>
+        <div class="stat-unit">°C over session</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Avg Humidity</div>
+        <div class="stat-value hum-color" id="aAvgHum">—</div>
+        <div class="stat-unit">% RH over session</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Avg Gas Level</div>
+        <div class="stat-value gas-color" id="aAvgGas">—</div>
+        <div class="stat-unit">ppm over session</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Readings</div>
+        <div class="stat-value navy-color" id="aReadings">0</div>
+        <div class="stat-unit">data points</div>
+      </div>
+    </div>
+
+    <div class="charts-col">
+      <div class="panel chart-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">Temperature History</div>
+            <div class="panel-sub">°C over time — last 40 readings</div>
+          </div>
+          <div class="chart-legend"><span class="legend-dot temp-dot"></span> Temperature</div>
+        </div>
+        <div class="chart-wrap"><canvas id="chartTemp"></canvas></div>
+      </div>
+
+      <div class="panel chart-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">Humidity History</div>
+            <div class="panel-sub">% RH over time — last 40 readings</div>
+          </div>
+          <div class="chart-legend"><span class="legend-dot hum-dot"></span> Humidity</div>
+        </div>
+        <div class="chart-wrap"><canvas id="chartHum"></canvas></div>
+      </div>
+
+      <div class="panel chart-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">Gas Level History</div>
+            <div class="panel-sub">PPM over time — last 40 readings</div>
+          </div>
+          <div class="chart-legend"><span class="legend-dot gas-dot"></span> Gas PPM</div>
+        </div>
+        <div class="chart-wrap"><canvas id="chartGas"></canvas></div>
+      </div>
+    </div>
+
+    <div class="minmax-row">
+      <div class="panel minmax-panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title">Session Min / Max</div>
+            <div class="panel-sub">Extremes recorded this session</div>
+          </div>
+        </div>
+        <table class="minmax-table">
+          <thead>
+            <tr>
+              <th>Sensor</th>
+              <th>Minimum</th>
+              <th>Maximum</th>
+              <th>Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="sensor-dot temp-dot-sm"></span> Temperature</td>
+              <td class="temp-color" id="mmTempMin">—</td>
+              <td class="temp-color" id="mmTempMax">—</td>
+              <td id="mmTempRange">—</td>
+            </tr>
+            <tr>
+              <td><span class="sensor-dot hum-dot-sm"></span> Humidity</td>
+              <td class="hum-color" id="mmHumMin">—</td>
+              <td class="hum-color" id="mmHumMax">—</td>
+              <td id="mmHumRange">—</td>
+            </tr>
+            <tr>
+              <td><span class="sensor-dot gas-dot-sm"></span> Gas Level</td>
+              <td class="gas-color" id="mmGasMin">—</td>
+              <td class="gas-color" id="mmGasMax">—</td>
+              <td id="mmGasRange">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="js/gauges.js"></script>
+<script type="module" src="js/app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(() => console.log('Service Worker Registered'));
+  }
+</script>
+</body>
+</html>

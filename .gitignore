@@ -1,0 +1,13 @@
+# Node modules
+node_modules/
+
+# Local Capacitor build files
+www/
+android/
+capacitor.config.json
+package.json
+package-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db

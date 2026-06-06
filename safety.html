@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safety Checklist — SmartHelmet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body class="subpage-body">
+
+<div class="layout">
+  <!-- SUBPAGE HEADER -->
+  <header class="subpage-header">
+    <a href="index.html" class="btn-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Dashboard
+    </a>
+    <div>
+      <h1 class="page-title">Worker Safety Checklist</h1>
+      <div class="breadcrumb">Shift Safety Audits & Protective Equipment Compliance Monitoring</div>
+    </div>
+  </header>
+
+  <!-- ════════════════ PAGE: SAFETY CHECKLIST ════════════════ -->
+  <main class="content page-view active" id="page-safety">
+    <div class="safety-layout">
+      
+      <!-- Left Column: Individual Worker Cards (Populated Dynamically) -->
+      <div class="worker-cards-col" id="workerCardsCol">
+        <!-- Rendered by safety.js -->
+        <div class="panel" style="padding: 30px; text-align: center; color: var(--muted); font-family: var(--mono); font-size: 0.8rem;">
+          Loading safety cards...
+        </div>
+      </div>
+
+      <!-- Right Column: Team Summary and Equipment Breakdown -->
+      <div class="summary-col">
+        <div class="panel score-panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">Team Compliance Summary</div>
+              <div class="panel-sub">Aggregate shift safety rating</div>
+            </div>
+          </div>
+          
+          <!-- Large Circular Gauge -->
+          <div class="summary-stats-block">
+            <div class="summary-ring-outer">
+              <canvas id="teamScoreRing" width="140" height="140"></canvas>
+              <div class="summary-ring-center">
+                <div class="summary-ring-val" id="teamScoreVal">—</div>
+                <div class="summary-ring-lbl">% Safe</div>
+              </div>
+            </div>
+            <div class="summary-verdict" id="teamScoreVerdict">Calculating…</div>
+          </div>
+
+          <!-- Equipment Metrics Breakdown -->
+          <div class="summary-equipment-metrics">
+            <div class="equip-title">Compliance by Category</div>
+            
+            <div class="equip-row">
+              <span class="equip-lbl">Smart Helmet</span>
+              <span class="equip-val" id="break-helmet">0% (0/3)</span>
+            </div>
+            <div class="equip-row">
+              <span class="equip-lbl">Flame-Resistant Suit</span>
+              <span class="equip-val" id="break-suit">0% (0/3)</span>
+            </div>
+            <div class="equip-row">
+              <span class="equip-lbl">Steel-Toe Boots</span>
+              <span class="equip-val" id="break-boots">0% (0/3)</span>
+            </div>
+            <div class="equip-row">
+              <span class="equip-lbl">Respirator Mask</span>
+              <span class="equip-val" id="break-mask">0% (0/3)</span>
+            </div>
+            <div class="equip-row">
+              <span class="equip-lbl">Safety Harness</span>
+              <span class="equip-val" id="break-harness">0% (0/3)</span>
+            </div>
+            <div class="equip-row">
+              <span class="equip-lbl">Cap Lamp & Battery</span>
+              <span class="equip-val" id="break-lamp">0% (0/3)</span>
+            </div>
+            <div class="equip-row">
+              <span class="equip-lbl">Comms & SCSR Rescuer</span>
+              <span class="equip-val" id="break-comms">0% (0/3)</span>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="summary-actions-block">
+            <button class="btn-primary btn-block" id="btnCheckAll">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Check All Workers
+            </button>
+            <button class="btn-secondary btn-block" id="btnResetAll">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              Reset All Checklists
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- Load dashboard's canvas gauges drawer & then our safety checklist controller -->
+<script src="js/gauges.js"></script>
+<script src="js/safety.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(() => console.log('Service Worker Registered'));
+  }
+</script>
+</body>
+</html>
